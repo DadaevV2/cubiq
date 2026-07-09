@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CubIQ — Логический куб для детей и взрослых</title>
+    <meta name="description" content="Тактильная головоломка с 5 активными гранями и голосовой обратной связью. Развивайте логику, программируйте схемы И/ИЛИ/НЕ.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0f1a">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="mechanics.html">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero секция -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="mono">CubIQ <span class="accent">Логический куб</span></h1>
+                    <p class="hero-description">Тактильная головоломка, объединяющая физические кубики с цифровым интеллектом. 5 активных граней, 12 уровней логики, голосовые подсказки.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" id="demoBtn">🎮 Попробовать демо</button>
+                        <a href="download.html" class="btn btn-secondary">📦 Купить набор</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/cube.png" alt="3D модель куба" class="floating-cube">
+                </div>
+            </div>
+        </section>
+
+        <!-- Видеообзор -->
+        <section class="video-section">
+            <div class="container">
+                <h2 class="section-title mono">Видеообзор</h2>
+                <div class="video-wrapper">
+                    <div class="video-placeholder">
+                        🎥 Здесь будет видео (YouTube / локальное)
+                        <div class="fake-video-controls">▶ 1:32 / 2:47</div>
+                    </div>
+                </div>
+                <p class="video-caption">Как играть: прикладывай цветные кубы к граням, слушай подсказки и проходи уровни.</p>
+            </div>
+        </section>
+
+        <!-- Краткие возможности -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title mono">Ключевые возможности</h2>
+                <div class="features-grid">
+                    <div class="feature-card"><div class="feature-icon">🎲</div><h3>5 активных граней</h3><p>Каждая грань распознаёт RFID-метки</p></div>
+                    <div class="feature-card"><div class="feature-icon">🧠</div><h3>12 уровней логики</h3><p>И, ИЛИ, НЕ, сложные схемы</p></div>
+                    <div class="feature-card"><div class="feature-icon">🔊</div><h3>Голосовые подсказки</h3><p>Динамик и голосовые фразы</p></div>
+                    <div class="feature-card"><div class="feature-icon">📱</div><h3>PWA-приложение</h3><p>Работает офлайн, устанавливается на телефон</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Как это работает (3 шага) -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title mono">Как это работает?</h2>
+                <div class="steps">
+                    <div class="step"><div class="step-number">1</div><h3>Приложи кубик</h3><p>Выбери цветной куб-метку и приложи к любой грани</p></div>
+                    <div class="step"><div class="step-number">2</div><h3>Получи звук</h3><p>Куб говорит: «Красный!», «Правильно!»</p></div>
+                    <div class="step"><div class="step-number">3</div><h3>Пройди уровень</h3><p>Собери все логические комбинации</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- БЛОК: СТАРТОВЫЙ НАБОР -->
+        <!-- ======================================== -->
+        <section class="starter-kit">
+            <div class="container">
+                <h2 class="section-title mono">✨ Стартовый набор «Волшебные кубы»</h2>
+                <div class="starter-grid">
+                    <div class="starter-card">
+                        <div class="starter-icon">🎁</div>
+                        <h3>Что внутри:</h3>
+                        <ul>
+                            <li>1 центральный куб (Arduino, RC522, динамик)</li>
+                            <li>7 цветных кубов (все цвета радуги)</li>
+                            <li>4 сказки по 7 глав (28 аудио)</li>
+                            <li>7 нот + 7 цветов + 5 карточек</li>
+                            <li>Инструкция по сборке</li>
+                        </ul>
+                        <div class="starter-price">12 500 ₽</div>
+                        <button class="btn btn-primary buy-now" data-product="Стартовый набор">Купить</button>
+                    </div>
+                    <div class="starter-features">
+                        <div class="feature-mini">🎵 7 нот</div>
+                        <div class="feature-mini">📖 28 сказок</div>
+                        <div class="feature-mini">🎨 7 цветов</div>
+                        <div class="feature-mini">🃏 5 карточек</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================== -->
+        <!-- БЛОК: ДОПОЛНЕНИЯ И УСЛУГИ -->
+        <!-- ======================================== -->
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title mono">➕ Дополнения и услуги</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-price="500">
+                        <div class="service-icon">🃏</div>
+                        <h3>Дополнительные карточки</h3>
+                        <p>5 пустых карточек для записи своих звуков</p>
+                        <div class="service-price">от 500 ₽</div>
+                        <button class="btn btn-small order-service" data-service="Дополнительные карточки">Заказать</button>
+                    </div>
+                    <div class="service-card" data-price="1000">
+                        <div class="service-icon">🎨</div>
+                        <h3>Свой стиль кубов</h3>
+                        <p>Покраска граней в любые цвета, логотипы, имена</p>
+                        <div class="service-price">от 1 000 ₽</div>
+                        <button class="btn btn-small order-service" data-service="Свой стиль кубов">Заказать</button>
+                    </div>
+                    <div class="service-card" data-price="3000">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Своя логика игры</h3>
+                        <p>Программирование уникальных уровней под ваш сценарий</p>
+                        <div class="service-price">от 3 000 ₽</div>
+                        <button class="btn btn-small order-service" data-service="Своя логика игры">Заказать</button>
+                    </div>
+                    <div class="service-card" data-price="2000">
+                        <div class="service-icon">📖</div>
+                        <h3>Свои сказки</h3>
+                        <p>Запись 7 глав любой сказки на заказ</p>
+                        <div class="service-price">от 2 000 ₽</div>
+                        <button class="btn btn-small order-service" data-service="Свои сказки">Заказать</button>
+                    </div>
+                    <div class="service-card" data-price="1500">
+                        <div class="service-icon">🔋</div>
+                        <h3>Аккумулятор + зарядка</h3>
+                        <p>Встроенная батарея 2000 мАч, USB-C зарядка</p>
+                        <div class="service-price">от 1 500 ₽</div>
+                        <button class="btn btn-small order-service" data-service="Аккумулятор + зарядка">Заказать</button>
+                    </div>
+                </div>
+                <div class="constructor-link">
+                    <button id="openConstructor" class="btn btn-primary btn-large">🛠️ Собрать свой набор</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Интерактивная демо-зона (модальное окно) -->
+        <div id="demoModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 class="mono">Интерактивная демо-механика</h2>
+                <p>Выберите уровень: 
+                    <select id="levelSelect">
+                        <option value="AND">И (AND) — оба куба</option>
+                        <option value="OR">ИЛИ (OR) — хотя бы один</option>
+                        <option value="NOT">НЕ (NOT) — синий, но не красный</option>
+                    </select>
+                </p>
+                <div id="cube3dContainer" style="height: 400px; margin: 1rem 0;"></div>
+                <div class="cards-container" id="cardsContainer">
+                    <div class="card" data-color="red" draggable="true" style="background: #e34234;">🔴 Красный</div>
+                    <div class="card" data-color="blue" draggable="true" style="background: #3a6ea5;">🔵 Синий</div>
+                    <div class="card" data-color="yellow" draggable="true" style="background: #e5c100;">🟡 Жёлтый</div>
+                    <div class="card" data-color="green" draggable="true" style="background: #4caf50;">🟢 Зелёный</div>
+                </div>
+                <div id="demoFeedback" class="demo-feedback"></div>
+                <button id="resetDemo" class="btn btn-secondary">Сбросить грани</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 CubIQ — Логический куб. Сделано с ❤️ для маленьких гениев.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

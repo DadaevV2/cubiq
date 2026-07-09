@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubIQ — Технические детали</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="mechanics.html" class="active">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mono section-title">⚙️ Технические детали</h1>
+        
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h3>🔩 Аппаратное обеспечение</h3>
+                <ul>
+                    <li>Центральный куб: Arduino Uno R3</li>
+                    <li>5× RFID-модуль RC522</li>
+                    <li>Мультиплексор CD74HC4067 (для экономии пинов)</li>
+                    <li>MP3-плеер DFPlayer Mini + динамик 3W</li>
+                    <li>Цветные кубы с RFID-метками (13.56 MHz)</li>
+                    <li>Активационный куб (отдельная метка)</li>
+                    <li>Питание: 5V 2A MicroUSB + стабилизатор 3.3V</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>💾 Программное обеспечение</h3>
+                <ul>
+                    <li>Прошивка на C++ (Arduino IDE)</li>
+                    <li>Библиотеки: MFRC522, DFPlayer_Mini_Mp3, CD74HC4067</li>
+                    <li>Алгоритм: сканирование граней по очереди, проверка правил, воспроизведение MP3</li>
+                    <li>PWA-приложение на HTML/CSS/JS (этот сайт)</li>
+                    <li>Исходный код: <a href="#">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h3>📦 Сборка набора</h3>
+                <p>Подробная инструкция: <a href="#">PDF-руководство</a>. Основные шаги:</p>
+                <ol>
+                    <li>Спаять мультиплексор с RC522</li>
+                    <li>Подключить DFPlayer к Arduino</li>
+                    <li>Загрузить прошивку</li>
+                    <li>Вклеить RFID-метки в кубики</li>
+                    <li>Собрать корпус куба</li>
+                </ol>
+                <a href="#" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Скачать схему (PDF)</a>
+            </div>
+        </div>
+
+        <div class="github-repo">
+            <h3>🐙 Открытый код на GitHub</h3>
+            <code>git clone https://github.com/cubiq/logic-cube</code>
+            <p style="margin-top: 1rem;">Звёзды и форки приветствуются! ⭐</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CubIQ — Логический куб. Сделано с ❤️ для маленьких гениев.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubIQ — Галерея Magic Cubes</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="mechanics.html" class="active">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+    <main class="container">
+        <h1 class="mono section-title">📸 Галерея Magic Cubes</h1>
+        
+        <!-- Фильтры -->
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="standard">Стандартные</button>
+            <button class="filter-btn" data-filter="logo">С логотипами</button>
+            <button class="filter-btn" data-filter="name">С именами</button>
+        </div>
+
+        <!-- Сетка галереи -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Заглушки — замените на реальные фото -->
+            <div class="gallery-item" data-category="standard">
+                <img src="assets/cube-standard-1.jpg" alt="Стандартный куб" class="gallery-img">
+                <div class="gallery-overlay">
+                    <h3>Стандартный набор</h3>
+                    <p>7 цветов радуги</p>
+                    <button class="btn-small order-design">Заказать такой</button>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="logo">
+                <img src="assets/cube-logo-1.jpg" alt="Куб с логотипом" class="gallery-img">
+                <div class="gallery-overlay">
+                    <h3>Логотип компании</h3>
+                    <p>Нанесение логотипа на грани</p>
+                    <button class="btn-small order-design">Заказать такой</button>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="name">
+                <img src="assets/cube-name-1.jpg" alt="Куб с именем" class="gallery-img">
+                <div class="gallery-overlay">
+                    <h3>Именной куб</h3>
+                    <p>Имя ребёнка на каждой грани</p>
+                    <button class="btn-small order-design">Заказать такой</button>
+                </div>
+            </div>
+            <!-- добавьте ещё 6-9 заглушек по аналогии -->
+        </div>
+    </main>
+
+    <div id="designModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Заказать дизайн</h3>
+            <p>Оставьте заявку, и мы свяжемся с вами для обсуждения дизайна:</p>
+            <form id="designForm">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Опишите желаемый дизайн"></textarea>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>...</footer>
+    <script src="script.js"></script>
+</body>
+</html>

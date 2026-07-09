@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubIQ — Механика и уровни</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="mechanics.html" class="active">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mono section-title">📚 Механика и 12 уровней логики</h1>
+        
+        <!-- Интерактивная демо-зона -->
+        <section class="demo-zone">
+            <h2 class="mono">🎮 Интерактивная демо-зона</h2>
+            <p>Перетащите цветные карточки на грани куба (номера 1–5):</p>
+            <div id="cube3dContainer" style="height: 400px; margin: 1rem 0;"></div>
+            <div class="cards-container">
+                <div class="card" data-color="red" draggable="true" style="background: #e34234;">🔴 Красный</div>
+                <div class="card" data-color="blue" draggable="true" style="background: #3a6ea5;">🔵 Синий</div>
+                <div class="card" data-color="yellow" draggable="true" style="background: #e5c100;">🟡 Жёлтый</div>
+                <div class="card" data-color="green" draggable="true" style="background: #4caf50;">🟢 Зелёный</div>
+            </div>
+            <select id="levelSelect" class="level-select">
+                <option value="AND">Уровень 1: И (AND) — оба куба</option>
+                <option value="OR">Уровень 2: ИЛИ (OR) — хотя бы один</option>
+                <option value="NOT">Уровень 3: НЕ (NOT) — синий, но не красный</option>
+            </select>
+            <div id="demoFeedback" class="demo-feedback"></div>
+            <button id="resetDemo" class="btn btn-secondary">Сбросить грани</button>
+        </section>
+
+        <h1 class="mono section-title">🎮 Логика игры — 3 режима</h1>
+        
+        <!-- Режимы -->
+        <div class="modes-grid">
+            <div class="mode-card" style="border-top: 4px solid #e34234;">
+                <div class="mode-icon">📖</div>
+                <h2>Режим «Сказки»</h2>
+                <p>Приложите карточку «Сказки» к любой грани — куб начнёт рассказывать сказку по главам. Каждый цветной куб — новая глава или персонаж.</p>
+                <ul>
+                    <li>🐭 «Колобок» — 7 глав</li>
+                    <li>🐻 «Маша и Медведи» — 7 глав</li>
+                    <li>🥕 «Репка» — 7 глав</li>
+                    <li>🏠 «Теремок» — 7 глав</li>
+                </ul>
+            </div>
+            
+            <div class="mode-card" style="border-top: 4px solid #4caf50;">
+                <div class="mode-icon">🎵</div>
+                <h2>Режим «Ноты»</h2>
+                <p>Приложите карточку «Ноты» — куб превращается в музыкальный инструмент. Каждый цветной куб — одна нота.</p>
+                <ul>
+                    <li>🔴 До</li>
+                    <li>🟠 Ре</li>
+                    <li>🟡 Ми</li>
+                    <li>🟢 Фа</li>
+                    <li>🔵 Соль</li>
+                    <li>🟣 Ля</li>
+                    <li>🔴 Си</li>
+                </ul>
+            </div>
+            
+            <div class="mode-card" style="border-top: 4px solid #3a6ea5;">
+                <div class="mode-icon">🎨</div>
+                <h2>Режим «Цвета»</h2>
+                <p>Приложите карточку «Цвета» — куб называет цвет приложенного куба на русском и английском.</p>
+                <ul>
+                    <li>🔴 Красный — Red</li>
+                    <li>🟠 Оранжевый — Orange</li>
+                    <li>🟡 Жёлтый — Yellow</li>
+                    <li>🟢 Зелёный — Green</li>
+                    <li>🔵 Синий — Blue</li>
+                    <li>🟣 Фиолетовый — Purple</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Как переключать режимы -->
+        <div class="mode-switch">
+            <h2 class="mono">🔄 Как переключать режимы?</h2>
+            <div class="switch-cards">
+                <div class="switch-card">📖 Карточка «Сказки» → режим сказок</div>
+                <div class="switch-card">🎵 Карточка «Ноты» → режим нот</div>
+                <div class="switch-card">🎨 Карточка «Цвета» → режим цветов</div>
+                <div class="switch-card">🃏 Карточка «Помощник» → подсказка</div>
+                <div class="switch-card">🔄 Карточка «Сброс» → сбросить текущий режим</div>
+            </div>
+        </div>
+
+        <!-- Кастомные уровни -->
+        <div class="custom-levels">
+            <h2 class="mono">⭐ Заказать свою логику игры</h2>
+            <p>Хотите уникальные уровни? Например, «Найди пару», «Последовательность», «Математические примеры» или свою сказку?</p>
+            <button id="customLogicBtn" class="btn btn-primary">Заказать свою логику →</button>
+        </div>
+
+        <!-- Список уровней -->
+        <section class="levels-list">
+            <h2 class="mono">🗂️ Полный список уровней</h2>
+            <div class="level-cards">
+                <details><summary>Уровень 1: И (AND)</summary><p>Правило: нужно приложить <strong>оба</strong> куба — красный И синий. Пример: красный на грань 1, синий на грань 2 → успех.</p></details>
+                <details><summary>Уровень 2: ИЛИ (OR)</summary><p>Правило: нужен <strong>хотя бы один</strong> куб — красный ИЛИ синий. Пример: только красный → успех.</p></details>
+                <details><summary>Уровень 3: НЕ (NOT)</summary><p>Правило: синий, но <strong>не красный</strong>. Пример: синий на грани 1, красного нет → успех.</p></details>
+                <details><summary>Уровни 4–6: комбинации И-НЕ, ИЛИ-НЕ, исключающее ИЛИ (XOR)</summary><p>Сложные схемы: (красный И синий) НЕ жёлтый, или (красный ИЛИ синий) НЕ зелёный, или ровно один из двух.</p></details>
+                <details><summary>Уровни 7–9: три переменные</summary><p>Комбинации с тремя цветами: красный И синий И зелёный; (красный И синий) ИЛИ (зелёный И жёлтый) и т.д.</p></details>
+                <details><summary>Уровни 10–12: бонусные схемы</summary><p>Мажоритарный элемент (2 из 3), сумма по модулю, приоритет операций.</p></details>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CubIQ — Логический куб. Сделано с ❤️ для маленьких гениев.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

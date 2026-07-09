@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubIQ — Установить PWA и купить набор</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="mechanics.html" class="active">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mono section-title">📲 Установить приложение PWA</h1>
+        
+        <div class="install-instructions">
+            <p>Чтобы установить CubIQ на телефон или компьютер:</p>
+            <ul>
+                <li><strong>Android (Chrome):</strong> нажмите на значок "⋮" → "Установить приложение"</li>
+                <li><strong>iOS (Safari):</strong> кнопка "Поделиться" → "На экран «Домой»"</li>
+                <li><strong>Windows/Mac (Chrome/Edge):</strong> значок установки в адресной строке ➕</li>
+            </ul>
+            <button id="installBtn" class="btn btn-primary" style="display: none;">Установить CubIQ</button>
+        </div>
+
+        <div class="buy-section">
+            <h2 class="mono">🛒 Купить физический набор</h2>
+            <div class="price-card">
+                <h3>Стандартный набор «Логический куб»</h3>
+                <p>Включает: центральный куб (Arduino), 5 цветных кубов-меток, активационный куб, USB-кабель, инструкцию.</p>
+                <p class="price">Цена: 12 500 ₽</p>
+                <button class="btn btn-primary">Заказать через Telegram</button>
+                <p class="hint">Отправка по РФ и СНГ. Возможна самостоятельная сборка — <a href="tech.html">схемы бесплатно</a>.</p>
+            </div>
+        </div>
+
+        <div class="support-project">
+            <h3>💖 Поддержать проект</h3>
+            <p>Если вам нравится CubIQ, вы можете поддержать разработку новых уровней и звуков:</p>
+            <a href="https://boosty.to/cubiq" class="btn btn-secondary">Boosty (донат)</a>
+            <a href="https://patreon.com/cubiq" class="btn btn-secondary">Patreon</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CubIQ — Логический куб. Сделано с ❤️ для маленьких гениев.</p>
+        </div>
+    </footer>
+
+    <script>
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'inline-block';
+        });
+        document.getElementById('installBtn')?.addEventListener('click', () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => deferredPrompt = null);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

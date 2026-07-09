@@ -1,0 +1,823 @@
+/* ========================================
+   ПЕРЕМЕННЫЕ (CSS Custom Properties)
+   Легко менять цвета, шрифты и отступы глобально
+   ======================================== */
+:root {
+    /* Цветовая схема — тёмная тема */
+    --bg-dark: #0a0f1a;      /* основной фон страницы */
+    --bg-card: #111827;       /* фон карточек и блоков */
+    --accent-red: #e34234;    /* красный куб */
+    --accent-blue: #3a6ea5;   /* синий куб */
+    --accent-yellow: #e5c100; /* жёлтый куб */
+    --accent-green: #4caf50;  /* зелёный куб */
+    --text-light: #e5e7eb;    /* цвет основного текста */
+    --border-glow: rgba(59, 130, 246, 0.3); /* свечение границ */
+}
+
+/* ========================================
+   ГЛОБАЛЬНЫЕ СТИЛИ
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* чтобы padding не увеличивал ширину блока */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Моноширинный шрифт для заголовков (как в программировании) */
+.mono, h1, h2, h3, .navbar .logo, .step-number {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Контейнер — ограничивает ширину контента по центру */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ========================================
+   НАВБАР (верхнее меню)
+   ======================================== */
+.navbar {
+    background: rgba(10, 15, 26, 0.95); /* полупрозрачный фон */
+    backdrop-filter: blur(8px);          /* эффект стекла */
+    position: sticky;                    /* прилипает при скролле */
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #1f2937;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+
+/* Логотип с градиентом */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, #60a5fa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Горизонтальное меню для десктопа */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #60a5fa;  /* подсветка активной страницы */
+}
+
+/* Особый стиль для кнопки "Установить PWA" в меню */
+.btn-nav {
+    background: #3b82f6;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+}
+
+/* Бургер-меню — появляется на мобильных */
+.burger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--text-light);
+}
+
+/* ========================================
+   HERO-СЕКЦИЯ (главный экран)
+   ======================================== */
+.hero {
+    padding: 4rem 0;
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+/* Анимированная 3D-модель куба */
+.floating-cube {
+    max-width: 300px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Ключевые кадры для анимации парения */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.accent {
+    color: #facc15; /* жёлтый акцент */
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-secondary {
+    background: #1e293b;
+    color: var(--text-light);
+    border: 1px solid #3b82f6;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+/* Группа кнопок в hero-секции */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* ========================================
+   СЕКЦИЯ ВОЗМОЖНОСТЕЙ (features)
+   ======================================== */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   КАК ЭТО РАБОТАЕТ (3 шага)
+   ======================================== */
+.steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.step {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.step-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3b82f6;
+}
+
+/* ========================================
+   МОДАЛЬНОЕ ОКНО (демо-механика)
+   ======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--bg-dark);
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 800px;
+    width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    border: 1px solid #3b82f6;
+}
+
+.close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ========================================
+   DRAG & DROP КАРТОЧКИ (цветные кубы)
+   ======================================== */
+.cards-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+    justify-content: center;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 2px black;
+    transition: transform 0.1s;
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+/* Блок с обратной связью от демо */
+.demo-feedback {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #1e293b;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   ВЫПАДАЮЩИЙ СПИСОК УРОВНЕЙ
+   ======================================== */
+.level-select {
+    background: var(--bg-card);
+    color: var(--text-light);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #3b82f6;
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* ========================================
+   СПИСОК УРОВНЕЙ (раскрывающиеся блоки)
+   ======================================== */
+.level-cards details {
+    background: var(--bg-card);
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.level-cards summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+/* ========================================
+   ТЕХНИЧЕСКИЕ ДЕТАЛИ (сетка карточек)
+   ======================================== */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.tech-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.tech-card ul, .tech-card ol {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.github-repo {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.github-repo code {
+    background: #000;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+/* ========================================
+   FAQ (ЧАСТЫЕ ВОПРОСЫ)
+   ======================================== */
+.faq-grid details {
+    background: var(--bg-card);
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.faq-grid summary {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+/* ========================================
+   ФОРМА ОБРАТНОЙ СВЯЗИ
+   ======================================== */
+.contact-form {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    background: #1e293b;
+    border: 1px solid #3b82f6;
+    border-radius: 0.5rem;
+    color: var(--text-light);
+}
+
+.form-message {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.success-message {
+    color: #4caf50;
+}
+
+/* ========================================
+   КОНТАКТЫ (сетка карточек)
+   ======================================== */
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.contact-card a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+.author-info {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* ========================================
+   PWA УСТАНОВКА / ПОКУПКА
+   ======================================== */
+.install-instructions {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.install-instructions ul {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.price-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #facc15;
+    margin: 1rem 0;
+}
+
+.hint {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 1rem;
+}
+
+.support-project {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* ========================================
+   ФУТЕР
+   ======================================== */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #1f2937;
+    margin-top: 3rem;
+}
+
+/* ========================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px)
+   Здесь настройки для телефонов и планшетов
+   ======================================== */
+@media (max-width: 768px) {
+    /* ---------- НАВБАР ---------- */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--bg-dark);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        gap: 0.75rem;          /* расстояние между кнопками */
+        border-bottom: 1px solid #1f2937;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.75rem 0;
+    }
+
+    /* Показываем бургер-меню */
+    .burger {
+        display: block;
+    }
+
+    /* ---------- HERO СЕКЦИЯ ---------- */
+    .hero .container {
+        flex-direction: column;  /* картинка и текст в колонку */
+        text-align: center;
+    }
+
+    .hero-buttons {
+        flex-direction: column;  /* кнопки друг под другом */
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    /* ---------- ЗАГОЛОВКИ ---------- */
+    h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    /* ---------- КАРТОЧКИ ДЛЯ DRAG & DROP ---------- */
+    .cards-container {
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .card {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* ---------- 3 ШАГА ---------- */
+    .steps {
+        flex-direction: column;  /* шаги друг под другом */
+    }
+
+    /* ---------- ФОРМА ---------- */
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 16px;  /* чтобы не зумалось на iPhone */
+    }
+}
+
+/* ========================================
+   ПЛАНШЕТЫ (768px - 1024px)
+   ======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .steps {
+        gap: 1.5rem;
+    }
+}
+
+/* ========================================
+   ДЕСКТОП (1024px и выше)
+   ======================================== */
+@media (min-width: 1024px) {
+    .hero .container {
+        flex-direction: row;  /* на десктопе текст слева, картинка справа */
+    }
+
+    .hero-content {
+        text-align: left;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start;
+    }
+}
+/* ======================================== */
+/* СТАРТОВЫЙ НАБОР И УСЛУГИ */
+/* ======================================== */
+.starter-kit {
+    padding: 2rem 0;
+}
+.starter-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.starter-card {
+    background: linear-gradient(135deg, #111827, #1e293b);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    min-width: 280px;
+    text-align: center;
+}
+.starter-price {
+    font-size: 2rem;
+    color: #facc15;
+    margin: 1rem 0;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.service-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+}
+.service-price {
+    font-size: 1.3rem;
+    color: #facc15;
+    margin: 0.5rem 0;
+}
+.btn-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    background: #3b82f6;
+    border: none;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+}
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+}
+.constructor-link {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* ГАЛЕРЕЯ */
+.gallery-filters {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+.filter-btn {
+    background: #1e293b;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    color: white;
+    cursor: pointer;
+}
+.filter-btn.active {
+    background: #3b82f6;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.gallery-item {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.gallery-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    padding: 0.5rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+/* КОНСТРУКТОР */
+.constructor-wrapper {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.constructor-form {
+    flex: 2;
+}
+.constructor-summary {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    height: fit-content;
+    position: sticky;
+    top: 80px;
+}
+.form-step {
+    background: var(--bg-card);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+.total-price {
+    font-size: 2rem;
+    color: #facc15;
+    text-align: center;
+    margin: 1rem 0;
+}
+.summary-details {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* РЕЖИМЫ ИГРЫ */
+.modes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.mode-card {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+.mode-icon {
+    font-size: 2.5rem;
+    text-align: center;
+}
+.switch-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+.switch-card {
+    background: #1e293b;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+}
+.custom-levels {
+    background: linear-gradient(135deg, #111827, #1e293b);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+}

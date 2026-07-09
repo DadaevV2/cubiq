@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubIQ — Поддержка и FAQ</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">CubIQ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="mechanics.html" class="active">Механика</a></li>
+                <li><a href="tech.html">Технические детали</a></li>
+                <li><a href="support.html">Поддержка</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="constructor.html">Конструктор</a></li>
+                <li><a href="download.html" class="btn-nav">Установить PWA</a></li>
+            </ul>
+            <div class="burger">☰</div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mono section-title">❓ Поддержка и частые вопросы</h1>
+        
+        <div class="faq-grid">
+            <details><summary>🔋 Что делать, если куб не видит метку?</summary><p>Проверьте питание (нужно 5В 2А), перезагрузите Arduino. Убедитесь, что метка находится в радиусе 2 см от грани.</p></details>
+            <details><summary>🔄 Как переключать уровни?</summary><p>Приложите активационный куб к любой грани на 2 секунды — куб пискнет и перейдёт на следующий уровень. Всего 12 уровней.</p></details>
+            <details><summary>🎵 Можно ли добавить свои звуки?</summary><p>Да! Замените файлы в папке /mp3 на SD-карте DFPlayer. Формат: 001.mp3, 002.mp3 ... Нумерация соответствует уровням и подсказкам.</p></details>
+            <details><summary>💻 Совместимость с Windows/Mac?</summary><p>Прошивка заливается через Arduino IDE (Windows, Mac, Linux). PWA работает в любом браузере.</p></details>
+            <details><summary>🛒 Где купить готовый набор?</summary><p>На странице <a href="download.html">«Скачать PWA / Купить»</a>. Возможна сборка своими руками по открытым схемам.</p></details>
+        </div>
+
+        <!-- Форма обратной связи -->
+        <div class="contact-form">
+            <h2 class="mono">📧 Напишите нам</h2>
+            <form id="supportForm">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Email для ответа" required>
+                <textarea rows="5" placeholder="Опишите проблему или вопрос"></textarea>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+            <div id="formMessage" class="form-message"></div>
+        </div>
+
+        <!-- Чат-виджет -->
+        <div class="chat-widget">
+            <p>💬 Живой чат поддержки (Telegram): <a href="https://t.me/cubiq_support">@cubiq_support</a></p>
+            <p>Или напишите в <a href="https://t.me/logiccube">Telegram-канал</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 CubIQ — Логический куб. Сделано с ❤️ для маленьких гениев.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('supportForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('formMessage').innerHTML = '<div class="success-message">✅ Спасибо! Мы ответим в течение 24 часов.</div>';
+            e.target.reset();
+            setTimeout(() => document.getElementById('formMessage').innerHTML = '', 3000);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
