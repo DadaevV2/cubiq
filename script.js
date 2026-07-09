@@ -6,7 +6,7 @@ document.querySelector('.burger')?.addEventListener('click', () => {
 });
 
 // ========================================
-// МОДАЛЬНОЕ ОКНО ДЛЯ ДЕМО-ЗОНЫ (старое)
+// МОДАЛЬНОЕ ОКНО ДЛЯ ДЕМО-ЗОНЫ
 // ========================================
 const demoModal = document.getElementById('demoModal');
 const demoBtn = document.getElementById('demoBtn');
@@ -23,7 +23,7 @@ window.addEventListener('click', (e) => {
 });
 
 // ========================================
-// 3D КУБ (Three.js)
+// 3D КУБ ДЛЯ ДЕМО-ЗОНЫ (Three.js)
 // ========================================
 let scene, camera, renderer, cube;
 
@@ -66,9 +66,7 @@ function init3DCube() {
     });
 }
 
-// ========================================
 // DRAG & DROP ДЛЯ ДЕМО-ЗОНЫ
-// ========================================
 const levelRules = {
     AND: { required: ['red', 'blue'], description: 'Нужны оба: красный И синий', success: '✅ Правильно! Красный И Синий = Истина' },
     OR: { required: ['red', 'blue'], any: true, description: 'Нужен хотя бы один: красный ИЛИ синий', success: '✅ Верно! Красный ИЛИ Синий = Истина' },
@@ -170,9 +168,91 @@ document.getElementById('resetDemo')?.addEventListener('click', () => {
 
 document.getElementById('levelSelect')?.addEventListener('change', updateDemoFeedback);
 
+// ЗАПУСК 3D КУБА (если есть контейнер)
+if (document.getElementById('cube3dContainer')) {
+    init3DCube();
+    setupDragAndDrop();
+}
+
 // ========================================
-// КАЛЬКУЛЯТОР КОНСТРУКТОРА (новая логика)
+// МАГИЧЕСКИЙ КУБ — ЛОГОТИП НА ГЛАВНОЙ
 // ========================================
+
+function initMagicCube() {
+    const container = document.getElementById('magic-cube-container');
+    if (!container) {
+        console.log('Контейнер magic-cube-container не найден');
+        return;
+    }
+    
+    console.log('Создаю магический куб-логотип...');
+    
+    // Очищаем контейнер
+    container.innerHTML = '';
+    container.style.cssText = 'width: 300px; height: 300px; margin: 0 auto; position: relative;';
+    
+    // Создаём вращающийся контейнер
+    const rotator = document.createElement('div');
+    rotator.className = 'simple-magic-cube';
+    
+    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'red'];
+    
+    for (let i = 0; i < 8; i++) {
+        const cube = document.createElement('div');
+        cube.className = `simple-cube pos${i}`;
+        cube.setAttribute('data-color', colors[i]);
+        
+        // Эффект нажатия со звуком
+        cube.addEventListener('click', () => {
+            cube.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                cube.style.transform = '';
+            }, 150);
+            
+            // Лёгкий звуковой отклик (опционально)
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.frequency.value = 440;
+                gain.gain.value = 0.1;
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.2);
+                osc.stop(ctx.currentTime + 0.2);
+            } catch(e) {}
+        });
+        
+        rotator.appendChild(cube);
+    }
+    
+    container.appendChild(rotator);
+    
+    // Анимация свечения по очереди
+    let idx = 0;
+    const cubes = document.querySelectorAll('.simple-cube');
+    
+    setInterval(() => {
+        cubes.forEach(c => c.classList.remove('glow'));
+        if (cubes[idx]) cubes[idx].classList.add('glow');
+        idx = (idx + 1) % cubes.length;
+    }, 800);
+    
+    console.log('✅ Магический куб-логотип загружен');
+}
+
+// Запускаем после полной загрузки страницы
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMagicCube);
+} else {
+    initMagicCube();
+}
+
+// ========================================
+// ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ (калькулятор, заказы и т.д.)
+// ========================================
+
 function updateConstructorPrice() {
     const basePrice = 12500;
     let extra = 0;
@@ -208,7 +288,6 @@ function updateConstructorPrice() {
     if (detailsEl) detailsEl.innerHTML = details.join(' • ');
 }
 
-// Инициализация конструктора (если страница конструктора)
 if (document.getElementById('constructorForm')) {
     document.querySelectorAll('.color-opt, .story-opt, #extraCards, #battery').forEach(el => {
         el.addEventListener('change', updateConstructorPrice);
@@ -217,9 +296,6 @@ if (document.getElementById('constructorForm')) {
     updateConstructorPrice();
 }
 
-// ========================================
-// ОТПРАВКА ЗАКАЗА (Telegram заглушка)
-// ========================================
 document.getElementById('submitOrder')?.addEventListener('click', () => {
     const total = document.getElementById('totalPrice')?.innerText;
     const details = document.getElementById('summaryDetails')?.innerText;
@@ -228,16 +304,10 @@ document.getElementById('submitOrder')?.addEventListener('click', () => {
     console.log('Order:', msg);
 });
 
-// ========================================
-// ОТКРЫТИЕ КОНСТРУКТОРА
-// ========================================
 document.getElementById('openConstructor')?.addEventListener('click', () => {
     window.location.href = '/constructor.html';
 });
 
-// ========================================
-// ЗАКАЗ УСЛУГ (кнопки в карточках)
-// ========================================
 document.querySelectorAll('.order-service').forEach(btn => {
     btn.addEventListener('click', () => {
         const service = btn.dataset.service;
@@ -252,9 +322,6 @@ document.querySelectorAll('.buy-now').forEach(btn => {
     });
 });
 
-// ========================================
-// ГАЛЕРЕЯ: ФИЛЬТРЫ И МОДАЛКА (новая)
-// ========================================
 const filterBtns = document.querySelectorAll('.filter-btn');
 const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -273,7 +340,6 @@ filterBtns.forEach(btn => {
     });
 });
 
-// Модалка для заказа дизайна (НОВОЕ ИМЯ ПЕРЕМЕННОЙ)
 const designModal = document.getElementById('designModal');
 document.querySelectorAll('.order-design').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -284,7 +350,6 @@ document.querySelector('#designModal .close')?.addEventListener('click', () => {
     if (designModal) designModal.style.display = 'none';
 });
 
-// Обработка формы заказа дизайна
 document.getElementById('designForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     alert('Заявка на дизайн отправлена! Мы свяжемся с вами.');
@@ -292,17 +357,99 @@ document.getElementById('designForm')?.addEventListener('submit', (e) => {
     e.target.reset();
 });
 
-// ========================================
-// ЗАКАЗ СВОЕЙ ЛОГИКИ
-// ========================================
 document.getElementById('customLogicBtn')?.addEventListener('click', () => {
     alert('Заявка на разработку своей логики отправлена!\nМы свяжемся для уточнения деталей.');
 });
 
 // ========================================
-// ЗАПУСК 3D КУБА (если есть контейнер)
+// ФОНОВАЯ МУЗЫКА (запуск по клику)
 // ========================================
-if (document.getElementById('cube3dContainer')) {
-    init3DCube();
-    setupDragAndDrop();
+
+let backgroundMusic = null;
+let musicPlaying = false;
+let musicAttempts = 0;
+
+// Создаём кнопку
+const musicBtn = document.createElement('button');
+musicBtn.id = 'musicToggle';
+musicBtn.className = 'music-toggle';
+musicBtn.innerHTML = '🎵 Включить музыку';
+musicBtn.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 40px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+`;
+document.body.appendChild(musicBtn);
+
+// Инициализация аудио
+function initMusic() {
+    if (!backgroundMusic) {
+        backgroundMusic = new Audio('assets/Cub-iq.mp3');
+        backgroundMusic.loop = true;
+        backgroundMusic.volume = 0.15;
+        backgroundMusic.preload = 'auto';
+    }
 }
+
+// Включение музыки
+function startMusic() {
+    initMusic();
+    if (!musicPlaying) {
+        backgroundMusic.play().then(() => {
+            musicPlaying = true;
+            musicBtn.innerHTML = '🎵 Музыка играет';
+            musicBtn.style.background = 'rgba(59, 130, 246, 0.8)';
+            musicBtn.style.borderColor = '#3b82f6';
+            console.log('🎵 Музыка запущена');
+        }).catch(e => {
+            console.log('Не удалось запустить музыку:', e.message);
+            musicBtn.innerHTML = '🔇 Нажмите для музыки';
+        });
+    }
+}
+
+// Выключение музыки
+function stopMusic() {
+    if (backgroundMusic && musicPlaying) {
+        backgroundMusic.pause();
+        musicPlaying = false;
+        musicBtn.innerHTML = '🔇 Музыка выключена';
+        musicBtn.style.background = 'rgba(0,0,0,0.7)';
+        musicBtn.style.borderColor = 'rgba(255,255,255,0.3)';
+        console.log('🔇 Музыка остановлена');
+    }
+}
+
+// Переключение
+function toggleMusic() {
+    if (musicPlaying) {
+        stopMusic();
+    } else {
+        startMusic();
+    }
+}
+
+// Вешаем событие на кнопку
+musicBtn.addEventListener('click', toggleMusic);
+
+// Пытаемся запустить музыку при первом любом клике на страницу
+function firstClickHandler() {
+    startMusic();
+    document.removeEventListener('click', firstClickHandler);
+    document.removeEventListener('touchstart', firstClickHandler);
+    console.log('👆 Первое взаимодействие — пробуем запустить музыку');
+}
+
+document.addEventListener('click', firstClickHandler);
+document.addEventListener('touchstart', firstClickHandler);
