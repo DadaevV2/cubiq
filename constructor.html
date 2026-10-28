@@ -47,32 +47,32 @@
 
                     <!-- Шаг 2: Сказки -->
                     <div class="form-step">
-                        <h3>📖 Шаг 2: Сказки (каждая +2000 ₽)</h3>
-                        <label><input type="checkbox" data-price="2000" class="story-opt"> Колобок</label>
-                        <label><input type="checkbox" data-price="2000" class="story-opt"> Маша и Медведи</label>
-                        <label><input type="checkbox" data-price="2000" class="story-opt"> Репка</label>
-                        <label><input type="checkbox" data-price="2000" class="story-opt"> Теремок</label>
-                        <label><input type="checkbox" data-price="2000" class="story-opt"> Своя сказка</label>
+                        <h3>📖 Шаг 2: Сказки (каждая + ₽)</h3>
+                        <label><input type="checkbox" data-price="+" class="story-opt"> Колобок</label>
+                        <label><input type="checkbox" data-price="+" class="story-opt"> Маша и Медведи</label>
+                        <label><input type="checkbox" data-price="+" class="story-opt"> Репка</label>
+                        <label><input type="checkbox" data-price="+" class="story-opt"> Теремок</label>
+                        <label><input type="checkbox" data-price="+" class="story-opt"> Своя сказка</label>
                     </div>
 
                     <!-- Шаг 3: Дополнительные карточки -->
                     <div class="form-step">
-                        <h3>🃏 Шаг 3: Дополнительные карточки (500 ₽ за 5 шт)</h3>
-                        <input type="number" id="extraCards" value="0" min="0" step="5" data-price-per="500">
-                        <span>шт (кратно 5)</span>
+                        <h3>🃏 Шаг 3: Дополнительные карточки (Уточнить)</h3>
+                        <input type="number" id="extraCards" value="0" min="0" step="0" data-price-per="0">
+                        <span>шт (кратно +)</span>
                     </div>
 
                     <!-- Шаг 4: Аккумулятор -->
                     <div class="form-step">
                         <h3>🔋 Шаг 4: Аккумулятор + зарядка</h3>
-                        <label><input type="checkbox" id="battery" data-price="1500"> Добавить (+1500 ₽)</label>
+                        <label><input type="checkbox" id="battery" data-price="0"> Добавить (+ ₽)</label>
                     </div>
                 </form>
             </div>
 
             <div class="constructor-summary">
                 <h3>💰 Итого:</h3>
-                <div class="total-price" id="totalPrice">12 500 ₽</div>
+                <div class="total-price" id="totalPrice">Уточните</div>
                 <div class="summary-details" id="summaryDetails"></div>
                 <button id="submitOrder" class="btn btn-primary">📦 Отправить заказ</button>
             </div>
