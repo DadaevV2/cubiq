@@ -254,7 +254,7 @@ if (document.readyState === 'loading') {
 // ========================================
 
 function updateConstructorPrice() {
-    const basePrice = 12500;
+    const basePrice = 0;
     let extra = 0;
     let details = [];
 
